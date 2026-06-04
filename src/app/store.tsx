@@ -3,11 +3,13 @@ import counterReducer from "../features/counter/counterSlice";
 import { kinopoiskapi } from "../services/api";
 import { searchQuerySlice } from "../features/searchQuerySlice";
 import { fastapi } from "../services/myapi";
+import { loginSlice } from "../features/loginSlice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     searchQuery: searchQuerySlice.reducer,
+    DateUser: loginSlice.reducer,
     [kinopoiskapi.reducerPath]: kinopoiskapi.reducer,
     [fastapi.reducerPath]: fastapi.reducer,
   },

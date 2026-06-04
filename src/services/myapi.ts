@@ -13,7 +13,21 @@ export const fastapi = createApi({
     Hello: builder.query<any, void>({
       query: () => `/`,
     }),
+    login: builder.mutation({
+      query: (body) => ({
+        url: "/login",
+        method: "POST",
+        body,
+      }),
+    }),
+    autho: builder.mutation({
+      query: (body) => ({
+        url: "/users",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useHelloQuery } = fastapi;
+export const { useHelloQuery, useLoginMutation, useAuthoMutation } = fastapi;

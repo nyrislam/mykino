@@ -24,8 +24,8 @@ export default function MainPage() {
             </div>
           );
         })}
-        <h1 className="mt-8 text-2xl font-bold mb-6">News</h1>
-        <News />
+        {/* <h1 className="mt-8 text-2xl font-bold mb-6">News</h1>
+        <News /> */}
       </div>
     </div>
   );

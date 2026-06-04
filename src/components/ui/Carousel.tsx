@@ -35,7 +35,10 @@ export default function Carousel({ data, isError, isLoading }) {
         {movies.map((item, index) => (
           <Link
             key={item.kinopoiskId || item.filmId || index}
-            to={"/movie/" + (item.kinopoisk || item.filmId)}
+            to={
+              "/movie/" +
+              (item.kinopoiskId == undefined ? item.filmId : item.kinopoiskId)
+            }
             className="shrink-0 block px-1"
             style={{ width: `${100 / visibleCount}%` }}
           >

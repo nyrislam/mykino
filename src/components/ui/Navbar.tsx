@@ -1,7 +1,16 @@
 import { Link } from "react-router";
 import Search from "./Search";
+import type { RootState } from "../../app/store.tsx";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
+  const status = useSelector((state: RootState) => state.DateUser);
+  let isLogin;
+  if (status.username == "") {
+    isLogin = "Войти";
+  } else {
+    isLogin = status.username;
+  }
   return (
     <header className="bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -27,12 +36,12 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
-              <a
+              <Link
+                to={"/myapi"}
                 className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm"
-                href="#"
               >
-                Login
-              </a>
+                {isLogin}
+              </Link>
             </div>
 
             <div className="block md:hidden">

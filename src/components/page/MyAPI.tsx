@@ -1,10 +1,14 @@
-import { useHelloQuery } from "../../services/myapi";
+import type { RootState } from "../../app/store.tsx";
+import { useSelector } from "react-redux";
+import Main from "../ui/autorisation/Main.tsx";
 
 export default function MyAPI() {
-  const { data, isLoading, isError } = useHelloQuery();
+  const sd = useSelector((state: RootState) => state.DateUser);
+  console.log("sss", sd);
 
-  if (isLoading) return <div>Загрузка...</div>;
-  if (isError) return <div>Ошибка подключения к бэкенду!</div>;
-  console.log(data);
-  return <div>MyAPI: {data.messege}</div>;
+  if (sd.username !== "") {
+    return <div>Вы вошли в систуму {sd.username}</div>;
+  } else {
+    return <Main />;
+  }
 }

@@ -4,10 +4,10 @@ import type { Response, builderQuery } from "./types";
 export const kinopoiskapi = createApi({
   reducerPath: "kinopoiskapi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://kinopoiskapiunofficial.tech/api/",
+    baseUrl: import.meta.env.VITE_API_URL,
     method: "GET",
     headers: {
-      "X-API-KEY": "",
+      "X-API-KEY": import.meta.env.VITE_API_KEY,
       "Content-Type": "application/json",
     },
   }),
