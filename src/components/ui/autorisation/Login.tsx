@@ -1,22 +1,19 @@
 import { useState } from "react";
 import { useLoginMutation } from "../../../services/myapi";
-import { useDispatch } from "react-redux";
-import { setDateUser } from "../../../features/loginSlice";
 
 export default function Login() {
-  const [gmail, setGmail] = useState("");
+  const [email, setGmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch();
   const [login, { isLoading, error }] = useLoginMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const result = await login({ gmail, password }).unwrap();
+      const result = await login({ email, password }).unwrap();
+      localStorage.setItem("token", result.access_token);
 
-      dispatch(setDateUser({ username: result }));
       console.log("Logged in user:", result);
     } catch (err) {
       console.error("Login failed:", err);
@@ -32,7 +29,7 @@ export default function Login() {
           id="gmail"
           type="email"
           placeholder="Your gmail"
-          value={gmail}
+          value={email}
           onChange={(e) => setGmail(e.target.value)}
         />
       </div>

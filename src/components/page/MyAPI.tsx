@@ -7,7 +7,7 @@ export default function MyAPI() {
   console.log("sss", sd);
 
   if (sd.username !== "") {
-    return <div>Вы вошли в систуму {sd.username}</div>;
+    return <div>Вы вошли в систуму</div>;
   } else {
     return <Main />;
   }
