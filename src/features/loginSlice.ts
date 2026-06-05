@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface CounterState {
-  username: string;
+export interface AuthState {
+  username: string | null;
 }
 
-const initialState: CounterState = {
-  username: "",
+const token = localStorage.getItem("token");
+
+const initialState = {
+  username: token ? "USER" : "",
+  isAuth: !!token,
 };
 
 export const loginSlice = createSlice({

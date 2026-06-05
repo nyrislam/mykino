@@ -1,19 +1,26 @@
 import { useState } from "react";
 import { useLoginMutation } from "../../../services/myapi";
+import { useDispatch } from "react-redux";
+import { setDateUser } from "../../../features/loginSlice";
 
 export default function Login() {
   const [email, setGmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [login, { isLoading, error }] = useLoginMutation();
-
+  const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(login);
 
     try {
-      const result = await login({ email, password }).unwrap();
-      localStorage.setItem("token", result.access_token);
+      const form = new URLSearchParams();
+      form.append("username", email);
+      form.append("password", password);
 
+      const result = await login(form).unwrap();
+      localStorage.setItem("token", result.access_token);
+      dispatch(setDateUser({ username: email, isAuth: true }));
       console.log("Logged in user:", result);
     } catch (err) {
       console.error("Login failed:", err);

@@ -7,9 +7,6 @@ import News from "./page/News";
 import MoviePage from "./page/MoviePage";
 import SearchPage from "./page/SearchPage";
 import MyAPI from "./page/MyAPI";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setDateUser } from "../features/loginSlice";
 
 const router = createBrowserRouter([
   {
@@ -47,14 +44,5 @@ const router = createBrowserRouter([
 const root = document.getElementById("root");
 
 export default function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      console.log("Пользователь авторизован");
-      dispatch(setDateUser({ username: "USER" }));
-    }
-  }, []);
   return <RouterProvider router={router} />;
 }
