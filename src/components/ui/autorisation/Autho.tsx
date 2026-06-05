@@ -3,12 +3,12 @@ import { useAuthoMutation } from "../../../services/myapi";
 
 export default function Login() {
   const [username, setUsername] = useState("");
-  const [gmail, setGmail] = useState("");
+  const [email, setGmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [autho, { isLoading, error }] = useAuthoMutation();
   function sendhendel() {
-    return autho({ username, gmail, password });
+    return autho({ username, email, password });
   }
   return (
     <form>
