@@ -3,10 +3,15 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const fastapi = createApi({
   reducerPath: "fastapi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://127.0.0.1:8000/",
-    method: "GET",
-    headers: {
-      accept: "application/json",
+    baseUrl: "http://localhost:8000",
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+
+      return headers;
     },
   }),
   endpoints: (builder) => ({
@@ -27,7 +32,46 @@ export const fastapi = createApi({
         body,
       }),
     }),
+    getMovies: builder.query<any, void>({
+      query: () => "/movies",
+    }),
+    createMovie: builder.mutation({
+      query: (body) => ({ url: "/movies", method: "POST", body }),
+    }),
+
+    addWishlist: builder.mutation({
+      query: (movie_id) => ({
+        url: "/wishlists",
+        method: "POST",
+        body: {
+          movie_id,
+          dir: 1,
+        },
+      }),
+    }),
+    removeWishlist: builder.mutation({
+      query: (movie_id) => ({
+        url: "/wishlists",
+        method: "POST",
+        body: {
+          movie_id,
+          dir: 0,
+        },
+      }),
+    }),
+    getWishlist: builder.query({
+      query: () => "/wishlists",
+    }),
   }),
 });
 
-export const { useHelloQuery, useLoginMutation, useAuthoMutation } = fastapi;
+export const {
+  useHelloQuery,
+  useLoginMutation,
+  useAuthoMutation,
+  useGetMoviesQuery,
+  useCreateMovieMutation,
+  useAddWishlistMutation,
+  useRemoveWishlistMutation,
+  useGetWishlistQuery,
+} = fastapi;

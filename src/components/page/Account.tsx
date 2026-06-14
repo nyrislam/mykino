@@ -1,13 +1,16 @@
 import type { RootState } from "../../app/store.tsx";
 import { useSelector } from "react-redux";
 import Main from "../ui/autorisation/Main.tsx";
+import Wishlist from "../ui/Wishlist.tsx";
 
-export default function MyAPI() {
+export default function Account() {
   const sd = useSelector((state: RootState) => state.DateUser);
-  console.log("sss", sd);
-
   if (sd.username !== "") {
-    return <div>Вы вошли в систуму</div>;
+    return (
+      <div>
+        <Wishlist />
+      </div>
+    );
   } else {
     return <Main />;
   }

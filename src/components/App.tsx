@@ -6,7 +6,9 @@ import ListMoviesPage from "./page/ListMoviesPage";
 import News from "./page/News";
 import MoviePage from "./page/MoviePage";
 import SearchPage from "./page/SearchPage";
-import MyAPI from "./page/MyAPI";
+import Account from "./page/Account";
+import Mymovies from "./page/Mymovies";
+import Admin from "./page/Admin";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +36,16 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: "/myapi",
-        element: <MyAPI />,
+        path: "/account",
+        element: <Account />,
+      },
+      {
+        path: "/mymovies",
+        element: <Mymovies />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
       },
     ],
   },

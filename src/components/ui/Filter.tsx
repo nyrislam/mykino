@@ -24,13 +24,13 @@ export default function Filter() {
 
   return (
     <div className="space-y-4 mt-4 pt-4 border-t border-gray-100">
-      <h4 className="mt-4 text-2xlmb-6">Filter</h4>
+      <h4 className="mt-4 text-2xlmb-6">Фильтер</h4>
       <div>
         <label
           htmlFor="order-select"
           className="block text-xs font-medium text-gray-500 mb-1"
         >
-          Order
+          По порядку
         </label>
         <select
           name="order"
@@ -42,7 +42,7 @@ export default function Filter() {
           value={order}
         >
           <option value="" hidden disabled>
-            Select order
+            Выберете порядок
           </option>
           {ordersList.map((order, idx) => (
             <option key={idx} value={order.value}>
@@ -56,7 +56,7 @@ export default function Filter() {
           htmlFor="country-select"
           className="block text-xs font-medium text-gray-500 mb-1"
         >
-          Countries
+          Страна
         </label>
         <select
           name="country"
@@ -68,7 +68,7 @@ export default function Filter() {
           value={countries}
         >
           <option value="" hidden disabled>
-            Select countries
+            Выберете Страну
           </option>
           {filtersdb.countries.map((fil) => (
             <option key={fil.id || fil.country} value={fil.id}>
@@ -82,7 +82,7 @@ export default function Filter() {
           htmlFor="year-select"
           className="block text-xs font-medium text-gray-500 mb-1"
         >
-          Year
+          Год
         </label>
         <select
           name="year"
@@ -94,7 +94,7 @@ export default function Filter() {
           value={year}
         >
           <option value="" hidden disabled>
-            Select Year
+            Выберете Год
           </option>{" "}
           {db.map((year) => (
             <option key={year} value={year}>
@@ -108,7 +108,7 @@ export default function Filter() {
           htmlFor="genre-select"
           className="block text-xs font-medium text-gray-500 mb-1"
         >
-          Genre
+          Жанр
         </label>
         <select
           name="genre"
@@ -120,7 +120,7 @@ export default function Filter() {
           value={genreId}
         >
           <option value="" hidden disabled>
-            Select genres
+            Выберете Жанр
           </option>{" "}
           {filtersdb.genres.map((fil) => (
             <option key={fil.id || fil.genre} value={fil.id}>
@@ -133,7 +133,7 @@ export default function Filter() {
         className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-red-600 my-4"
         onClick={() => dispatch(resetQuery())}
       >
-        Reset
+        Сброс
       </button>
     </div>
   );

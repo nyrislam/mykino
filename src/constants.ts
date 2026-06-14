@@ -4,31 +4,31 @@ type Typelist = {
 };
 
 export const top_list: Typelist[] = [
-  // {
-  //   title: "Popular",
-  //   get_api: "TOP_POPULAR_ALL",
-  // },
-  // {
-  //   title: "Top Films",
-  //   get_api: "TOP_250_MOVIES",
-  // },
-  // {
-  //   title: "Top Series",
-  //   get_api: "TOP_250_TV_SHOWS",
-  // },
+  {
+    title: "Популярные",
+    get_api: "TOP_POPULAR_ALL",
+  },
+  {
+    title: "Популярные Фильмы",
+    get_api: "TOP_250_MOVIES",
+  },
+  {
+    title: "Популярные Сериалы",
+    get_api: "TOP_250_TV_SHOWS",
+  },
 ];
 
 export const movies_list: Typelist[] = [
-  // {
-  //   title: "Popular",
-  //   get_api: "ALL",
-  // },
-  // {
-  //   title: "Film",
-  //   get_api: "FILM",
-  // },
-  // {
-  //   title: "Series",
-  //   get_api: "TV_SERIES",
-  // },
+  {
+    title: "Популярные",
+    get_api: "ALL",
+  },
+  {
+    title: "Фильмы",
+    get_api: "FILM",
+  },
+  {
+    title: "Сериалы",
+    get_api: "TV_SERIES",
+  },
 ];

@@ -32,7 +32,7 @@ export default function MoviePage() {
         className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 my-4"
         onClick={() => navigate(-1)}
       >
-        &larr; Back
+        &larr; Назад
       </button>
       <div className="flex flex-col md:flex-row gap-8">
         <img
@@ -51,9 +51,12 @@ export default function MoviePage() {
         </div>
       </div>
 
-      <video controls className="mt-8 w-full rounded-lg  mx-auto shadow-md">
-        <source src={"https://www.youtube.com/watch?v=gbcVZgO4n4E"} />
-      </video>
+      <iframe
+        src={`https://fbfind.top/film/${data.kinopoiskId}/1234`}
+        className="w-full h-[500px]"
+        allow="autoplay; fullscreen"
+        scrolling="no"
+      />
       <div className="flex-1">
         <h1 className="mt-4 text-2xl font-bold mb-6">Сикелы и приквалы</h1>
         <Carousel
